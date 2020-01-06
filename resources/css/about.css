@@ -1,0 +1,25 @@
+   .random-text{
+	 color: blueviolet	;
+ }
+ body {
+	 font-family: monospace;
+ }
+ .random-text{
+	 text-decoration: underline;
+ }
+ .important-text {
+		font-size: 10px
+ }
+ .container {
+	 font-size: 2em;
+ }
+ p{
+	 text-align: center;
+ }
+ .first-div{
+	 border: 1px solid black;
+ } 
+  .first {
+	 background-color: greenyellow; 
+	 height: 700px;
+  }
