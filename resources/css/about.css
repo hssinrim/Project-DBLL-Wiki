@@ -1,4 +1,4 @@
-   .random-text{
+    .random-text{
 	 color: blueviolet	;
  }
  body {
@@ -8,7 +8,7 @@
 	 text-decoration: underline;
  }
  .important-text {
-		font-size: 10px
+		font-size: 100px
  }
  .container {
 	 font-size: 2em;
@@ -20,6 +20,6 @@
 	 border: 1px solid black;
  } 
   .first {
-	 background-color: greenyellow; 
+	 background-color: pink; 
 	 height: 700px;
   }
