@@ -6,15 +6,15 @@
 <script src="qrc:///js/_settingsManager.js"></script>
 <link rel="stylesheet" type="text/css" href="qrc:///css/_settingsManager.css"/>
 </head>
-<body onload="init()">
+<body onload="init()" style="background-color: pink;"">
 <div id="settings">
-    <h1>Settings</h1>
+    <h1 style="color:#ff0000">Settings</h1>
     <div class="row">
-        <label>Port for local Kiwix server : </label>
+        <label> <p style="color:#ff0000"> Port for local Kiwix server : </p></label>
         <input type="number" min="1" max="65535" v-model="kiwixServerPort" v-on:change="setPort()">
     </div>
     <div class="row">
-        <label>Zoom level : </label>
+        <label><p style="color:#ff0000">Zoom level :</p> </label>
         <div class="percentage-symbol"><input type="number" step="10" min="30" max="500" v-model="zoomFactor" v-on:change="setZoomFactor()"></div>
     </div>
 </div>
