@@ -1,4 +1,4 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+ <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
 <html>
 <head>
 <script src="qrc:///js/vue.js"></script>
@@ -6,38 +6,47 @@
 <script src="qrc:///js/_contentManager.js"></script>
 <link rel="stylesheet" type="text/css" href="qrc:///css/_contentManager.css"/>
 </head>
-<body onload="init()">
+<body onload="init()" style="background-color: lavenderblush;">
 <div id="app">
-  <div id="searchBar">
+  <div color="red" id="searchBar">
     <form>
-      <input id="searchInput" type="text" placeholder="Search files" oninput="setSearch(this.value)"/>
-    </form>
+      <input id="searchInput" type="text" placeholder="Search files" oninput="setSearch(this.value)"style="border-color: bisque;
+    border-top-left-radius: inherit;
+    font-size: x-large;"/>
+    </form><br>
   </div>
-  <div id="bookTable">
-    <div class="header">
+  <div id="bookTable" style="border: ridge;    box-shadow: 6px 6px 6px black;
+  ">
+    <div class="header" style="font-size: larger; font-family: Comic Sans MS;     color: brown;
+       margin-left: 30%;    text-shadow: 2px 2px 4px black;
+    
+">
       <span class="tablecell cell0"></span>
-      <span v-on:click="sortBookBy('title')" :class="{ sortableBold: isActive('title') }" class="tablecell cell1 sortable"><i :class="{ arrowDown: isUpOrDown('title', true), arrowUp: isUpOrDown('title', false) }"></i> File name</span>
+      <span v-on:click="sortBookBy('title')" :class="{ sortableBold: isActive('title') }" class="tablecell cell1 sortable"><i :class="{ arrowDown: isUpOrDown('title', true), arrowUp: isUpOrDown('title', false) }"></i> Title</span>
       <span v-on:click="sortBookBy('size')" :class="{ sortableBold: isActive('size') }" class="tablecell cell2 sortable"><i :class="{ arrowDown: isUpOrDown('size', true), arrowUp: isUpOrDown('size', false) }"></i> Size</span>
       <span v-on:click="sortBookBy('date')" :class="{ sortableBold: isActive('date') }" class="tablecell cell3 sortable"><i :class="{ arrowDown: isUpOrDown('date', true), arrowUp: isUpOrDown('date', false) }"></i> Date</span>
       <span class="tablecell cell4">Content type</span>
       <span class="tablecell cell5 tablerow">
-          <button v-on:click="resetSort()">reset sort</button>
+          <button v-on:click="resetSort()" style="border-color: bisque; font-size: larger;
+    border-bottom: inset;
+    background-color: beige;display: block;margin-left: 10%;">reset sort</button>
       </span>
-    </div>
+    </div> <br>
     <div id="load-icon" class="loader"></div>
     <div id="bookList" onscroll=scrolled(this)>
       <div id="menu" class="menu">
-        <ul class="menu-options">
+        <ul type="square" class="menu-options"style="font-weight: bold;font-style: italic;    text-shadow: 2px 2px 4px black;
+        ">
           <li v-on:click="openBook(getBookFromMousePosition())" class="menu-option local-option">Open</li>
           <li v-on:click="eraseBook(getBookFromMousePosition())" class="menu-option local-option">Delete</li>
-          <li v-on:click="downloadBook(getBookFromMousePosition())" class="menu-option download-option">Download</li>        
+          <li v-on:click="downloadBook(getBookFromMousePosition())" class="menu-option download-option">Download</li>
           <li v-on:click="resumeBook(getBookFromMousePosition())" class="menu-option resume-option">Resume</li>
           <li v-on:click="pauseBook(getBookFromMousePosition())" class="menu-option pause-option">Pause</li>
           <li v-on:click="cancelBook(getBookFromMousePosition())" class="menu-option cancel-option">Cancel</li>
         </ul>
       </div>
       <details v-for="book in displayedBooks(books, displayedBooksNb)" class="book">
-        <summary v-bind:id="book.id" class="tablerow book-summary">
+        <summary v-bind:id="book.id" class="tablerow book-summary"style="margin-left: 30%;">
           <span class="tablecell cell0">
             <img v-if="book.faviconUrl" v-bind:src="'http://' + book.faviconUrl" />
             <img v-else-if="book.faviconMimeType" v-bind:src="'zim://' + book.id + '.favicon.meta'" />
@@ -59,10 +68,15 @@
               <span>
                 {{ niceBytes(downloads[book.id].completedLength) }} / {{ niceBytes(downloads[book.id].totalLength) }}
               </span>
-            </template>
-            <button v-if="book.path" v-on:click="openBook(book)" class="line">Open</button>
-            <button v-if="!book.path && !downloads[book.id]" v-on:click="downloadBook(book)" class="">Download</button>
-    
+            </template><br>
+			<div style="display: flow-root;margin-left: 20%;">
+            <button v-if="book.path" v-on:click="openBook(book)" class="line" style="border-color: bisque;
+    background-color: beige;
+    font-size: larger;">Open</button>
+            <button v-if="!book.path && !downloads[book.id]" v-on:click="downloadBook(book)" class="" style="border-color: bisque;
+    background-color: beige;
+    font-size: larger;">Download</button>
+</div>
             <!-- round download progress bar -->
             <template v-if="downloads[book.id]" class="line">
               <div v-on:click.stop.prevent="pauseResumeBook(book)" v-bind:style="{'--download': downloads[book.id].completedLengthInDegree}" class="circle-wrap">
@@ -75,14 +89,14 @@
                   </div>
                   <div class="inside-circle">
                     <img v-if="downloads[book.id] && downloads[book.id].status == 'active'" src="qrc:///icons/pause-button.png">
-                    <img v-if="downloads[book.id] && downloads[book.id].status == 'paused'" src="qrc:///icons/play-button.png">                          
+                    <img v-if="downloads[book.id] && downloads[book.id].status == 'paused'" src="qrc:///icons/play-button.png">
                   </div>
                 </div>
               </div>
             </template>
             <!-- end  -->
-            
-            <img class="cancel-button" v-if="downloads[book.id]" v-on:click.stop.prevent="cancelBook(book)" src="qrc:///icons/cancel-button.png">
+
+            <img class="cancel-button" v-if="downloads[book.id]" v-on:click.stop.prevent="cancelBook(book)" src="qrc:///icons/cancel-button.png" style="margin-left: 27%;">
           </span>
         </summary>
         <p class="content">
