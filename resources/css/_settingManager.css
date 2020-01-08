@@ -1,0 +1,46 @@
+   html, body {
+    padding: 0;
+    margin: auto;
+    height: 100%;
+    position: relative;
+    width: 75%;
+    color: white;
+    font-size: 15pt;
+    background: linear-gradient(to bottom, #33ccff 0%, #ff99cc 100%);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+h1{
+    color: white;
+}
+
+
+#settings {
+    height: 100%;
+    position: relative;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid grey;
+    height: 40px;
+}
+
+input {
+     width: 80px;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    opacity: 1;
+}
+
+div.percentage-symbol::after{
+    content: "%";
+    margin-left: -35px;
+}
