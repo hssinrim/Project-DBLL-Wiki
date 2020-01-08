@@ -1,10 +1,14 @@
-html, body {
+     html, body {
     padding: 0;
     margin: 0;
     height: 100%;
     position: relative;
     width: 100%;
-    overflow: hidden;
+    background: linear-gradient(to bottom, #33ccff 0%, #ff99cc 100%);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: white;
 }
 #app {
     height: 100%;
@@ -19,10 +23,10 @@ html, body {
 }
 
 #searchInput {
-    background-image: url('qrc:///icons/search.svg');
+    background-image: url('../icons/search.svg');
     background-repeat: no-repeat;
-    background-position: left top;
-    background-size: 40px 40px;
+    background-position: left 10px top 10px;
+    background-size: 23px 23px;
     padding: 0px;
     margin: 0px;
     padding-left: 45px;
@@ -249,7 +253,7 @@ details:hover {
 
 .circle-wrap img {
     height: 30px;
-    width: auto;
+      width: auto;
 }
 
 .cancel-button {
@@ -262,3 +266,4 @@ details:hover {
 .line {
     display: inline;
 }
+ 
